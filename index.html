@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi página web</title>
+  <style>
+    :root {
+      --azul: #3b82f6;
+      --cabecera: #8b0000;
+      --fondo: #000000;
+      --texto: #f1f5f9;
+      --borde: #52525b;
+      --pie: #border-collapse;
+      --lateral: #121212;
+      --marca: #854d0e;
+      --boton-tema-texto: #000000;
+    }
+    body.claro {
+      --azul: #2563eb;
+      --cabecera: #2563eb;
+      --fondo: #f5f5dc;
+      --texto: #1e293b;
+      --borde: #94a3b8;
+      --pie: #1b2638;
+      --lateral: #dbe4ff;
+      --marca: #fde68a;
+      --boton-tema-texto: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--fondo);
+      color: var(--fondo);
+      line-height: 1.5;
+    }
+    a { color: var(--azul); }
+    :focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+
+    header {
+      background: var(--cabecera);
+      color:pink;
+      border-bottom: 1px solid var(--borde);
+      padding: 20px 24px 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    header h1 { margin: 0; font-size: 1.5rem; width: 100%; }
+    nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    nav a { color: #fff; text-decoration: none; font-size: .9rem; }
+    nav a:hover { text-decoration: underline; }
+    #btn-tema {
+      background: #fff;
+      color: var(--boton-tema-texto);
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 250px;
+      min-height: 60vh;
+    }
+    main { padding: 16px; display: grid; gap: 14px; align-content: start; }
+    section {
+      border: 1.5px dashed var(--borde);
+      border-radius: 4px;
+      padding: 12px 16px;
+    }
+    section h2 { margin: 0 0 8px; font-size: 1rem; }
+    aside {
+      background: var(--lateral);
+      padding: 20px 16px;
+    }
+    aside h2 { margin: 0 0 4px; font-size: 1rem; }
+    aside p { margin: 0 0 14px; font-size: .85rem; }
+    details {
+      border: 1.5px dashed var(--borde);
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: .85rem;
+    }
+    summary { cursor: pointer; font-weight: 700; }
+
+    mark { background: var(--marca); color: inherit; padding: 0 4px; }
+    blockquote {
+      margin: 8px 0;
+      padding: 4px 12px;
+      border-left: 4px solid var(--azul);
+      font-style: italic;
+    }
+    .listas { display: flex; flex-wrap: wrap; gap: 4px 32px; }
+    .listas ul, .listas ol { margin: 0; padding-left: 20px; }
+    dt { font-weight: 700; }
+    dd { margin: 0 0 4px 16px; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { background: var(--azul); color: #fff; text-align: left; padding: 6px 10px; }
+    td { padding: 6px 10px; border: 1px solid var(--borde); }
+
+    .multimedia { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+    figure { margin: 0; }
+    figure img { display: block; width: 180px; max-width: 100%; height: auto; }
+    figcaption { font-size: .75rem; opacity: .8; }
+    video { width: 260px; max-width: 100%; background: #111827; }
+
+    form { display: grid; gap: 10px; max-width: 420px; }
+    label { display: grid; gap: 3px; font-size: .85rem; }
+    input, select {
+      padding: 6px 8px;
+      border: 1px solid var(--borde);
+      border-radius: 3px;
+      background: var(--fondo);
+      color: var(--texto);
+      font: inherit;
+    }
+    form button {
+      justify-self: start;
+      background: var(--azul);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 22px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    #mensaje { margin: 0; font-size: .85rem; min-height: 1.2em; }
+
+    footer {
+      background: var(--pie);
+      color: #fff;
+      border-top: 1px solid var(--borde);
+      text-align: center;
+      padding: 18px;
+      font-size: .85rem;
+    }
+
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mi página web</h1>
+    <nav aria-label="Principal">
+      <a href="#texto">Texto</a>
+      <a href="#listas">Listas</a>
+      <a href="#tabla">Tabla</a>
+      <a href="#multimedia">Multimedia</a>
+      <a href="#formulario">Formulario</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button id="btn-tema" type="button">Cambiar tema</button>
+  </header>
+
+  <div class="layout">
+    <main>
+      <section id="texto">
+        <h2>Elementos de texto</h2>
+        <p>Párrafo con <strong>negrita</strong>, y <mark>resaltado</mark>.</p>
+        <blockquote>Cita destacada: aprendiendo a programar desde cero en la mejor fomar de aprender.</blockquote>
+        <p><a href="https://developer.mozilla.org/es/" target="_blank" rel="noopener noreferrer">Enlace externo</a></p>
+      </section>
+
+      <section id="listas">
+        <h2>Listas</h2>
+        <div class="listas">
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+          <ol>
+            <li>Crear</li>
+            <li>Escribir</li>
+            <li>Publicar</li>
+          </ol>
+        </div>
+        <dl>
+          <dt>Término</dt>
+          <dd>Descripción del término.</dd>
+        </dl>
+      </section>
+
+      <section id="tabla">
+        <h2>Tabla</h2>
+        <table>
+          <thead>
+            <tr><th>Tecnología</th><th>Función</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HTML</td><td>Estructura</td></tr>
+            <tr><td>CSS</td><td>Diseño</td></tr>
+            <tr><td>JavaScript</td><td>Interactividad</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="multimedia">
+        <h2>Multimedia</h2>
+        <div class="multimedia">
+          <figure>
+            <figcaption>Pie de foto</figcaption>
+  <img alt="Laptop con código de programación" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600">
+  <figcaption>la programacion es un lenguaje estandar utilizado en informatica<figure>
+  <figcaption>Mi espacio de trabajo.</figcaption>
+</figure></figcaption>
+</figure>
+            
+          </figure>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/ELSm-G201Ls?si=DOvrP_118jpIdP1U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </video>
+        </div>
+      </section>
+
+      <section id="formulario">
+        <h2>Formulario</h2>
+        <form id="form-contacto">
+          <label>Nombre
+            <input type="text" name="nombre" required>
+          </label>
+          <label>Correo
+            <input type="email" name="correo" required>
+          </label>
+          <label>País
+            <select name="pais" required>
+              <option value="">Selecciona un país</option>
+              <option>monterrey<option>
+              <option>san luis potosi</option>
+              <option>chihuhaga</option>
+              <option>mexico</option>
+              <option>tijuana</option>
+              <option>oxaca</option>
+            </select>
+          </label>
+          <button type="submit">Enviar</button>
+          <p id="mensaje" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <aside>
+      <h2>Barra lateral</h2>
+      <p>Contenido relacionado</p>
+      <details>
+        <summary>Desplegable</summary>
+        <p>Ver más contenido</p>
+      </details>
+    </aside>
+  </div>
+
+  <footer id="contacto">
+    <p style="margin:0">© 2026 Tu Nombre. Hecho con HTML, CSS y JavaScript.</p>
+  </footer>
+
+  <script>
+    
+    const btnTema = document.getElementById('btn-tema');
+    btnTema.addEventListener('click', () => {
+      document.body.classList.toggle('claro');
+    });
+
+    const form = document.getElementById('form-contacto');
+    const mensaje = document.getElementById('mensaje');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = form.nombre.value.trim();
+      mensaje.textContent = '¡Gracias, ' + nombre + '! el mensaje fue enviado.';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
